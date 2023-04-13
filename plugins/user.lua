@@ -9,4 +9,8 @@ options = {
   },
 }
 
+-- only use jk for better_escape because I don't like double bindings
+require("better_escape").setup {
+  mapping = { "jk" }
+}
 return options

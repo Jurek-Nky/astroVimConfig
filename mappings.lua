@@ -6,6 +6,8 @@ local maps = { n = {}, v = {}, i = {}, t = {} }
 -- rebinding quit key to force quit
 maps.n["qf"] = { "<cmd>q!<cr>", desc = "force quit" }
 maps.n["qq"] = { "<cmd>q<cr>", desc = "quit" }
+-- unmap escape to get used to using jk for escaping insert mode
+maps.i["<Esc>"] = {"<Nop>", desc = "remove escape to get used to using jk"}
 -- ############################
 -- buffers
 -- ############################
