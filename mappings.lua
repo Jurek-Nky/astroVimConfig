@@ -1,7 +1,7 @@
 local utils = require "astronvim.utils"
 local maps = { n = {}, v = {}, i = {}, t = {} }
 -- ############################
--- general 
+-- general
 -- ############################
 -- rebinding quit key to force quit
 maps.n["qf"] = { "<cmd>q!<cr>", desc = "force quit" }
@@ -48,5 +48,19 @@ if htop then
     desc = "ToggleTerm htop"
   }
 end
+-- keybind for lazygit dotfiles
+local lazygit = vim.fn.executable "lazygit" == 1 and "lazygit"
+if lazygit then
+  maps.n["<leader>tc"] = {
+    function() utils.toggle_term_cmd(term_opts.float_exit_term("lazygit --git-dir=$HOME/.cfg --work-tree=$HOME")) end,
+    desc = "lazygit for dotfiles"
+  }
+  maps.n["<leader>gC"] = {
+    function() utils.toggle_term_cmd(term_opts.float_exit_term("lazygit --git-dir=$HOME/.cfg --work-tree=$HOME")) end,
+    desc = "lazygit for dotfiles"
+  }
+end
+
+
 
 return maps
