@@ -51,16 +51,13 @@ end
 -- keybind for lazygit dotfiles
 local lazygit = vim.fn.executable "lazygit" == 1 and "lazygit"
 if lazygit then
-  maps.n["<leader>tc"] = {
-    function() utils.toggle_term_cmd(term_opts.float_exit_term("lazygit --git-dir=$HOME/.cfg --work-tree=$HOME")) end,
-    desc = "lazygit for dotfiles"
-  }
   maps.n["<leader>gC"] = {
     function() utils.toggle_term_cmd(term_opts.float_exit_term("lazygit --git-dir=$HOME/.cfg --work-tree=$HOME")) end,
     desc = "lazygit for dotfiles"
   }
 end
-
+-- unmapping double lazygit key. main lazygit key is <leader>gg
+maps.n["<leader>tl"] = false
 
 
 return maps

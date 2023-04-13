@@ -1,3 +1,4 @@
+-- terminal opts can be used in user mapping file
 opts_list = {
   float_exit_term = function(cmd)
     return {
