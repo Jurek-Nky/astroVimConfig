@@ -7,10 +7,13 @@ options = {
     "folke/tokyonight.nvim",
     opts = require("user.plugins.options.tokyonight")
   },
-}
-
--- only use jk for better_escape because I don't like double bindings
-require("better_escape").setup {
-  mapping = { "jk" }
+  {
+    "max397574/better-escape.nvim",
+    event = "InsertCharPre",
+    opts = {
+      timeout = 300,
+      mapping = { "jk" }
+    }
+  },
 }
 return options
