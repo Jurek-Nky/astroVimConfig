@@ -5,7 +5,18 @@ options = {
   },
   {
     "folke/tokyonight.nvim",
+    lazy = false,
     opts = require("user.plugins.options.tokyonight")
+  },
+  {
+    "catppuccin/nvim",
+    lazy = false,
+    name = "catppuccin",
+    -- opts = require("user.plugins.options.catppuccin")
+  },
+  {
+    "sainnhe/everforest",
+    lazy = false,
   },
   {
     "max397574/better-escape.nvim",
