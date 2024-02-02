@@ -24,6 +24,16 @@ maps.n["<leader>bD"] = {
 -- ToggleTerm
 -- ############################
 local term_opts = require("user.plugins.options.toggleterm")
+-- keybind to generate PDF using typst
+local neofetch = vim.fn.executable "neofetch" == 1 and "neofetch"
+if neofetch then
+  maps.n["<leader>tt"] = {
+    function() utils.toggle_term_cmd(term_opts.float_exit_term("typst compile main.typ")) end,
+    desc = "Typst compile main.typ"
+  }
+else
+  maps.n["<leader>tn"] = false -- unbinding astros default mapping for node
+end
 -- keybind for neofetch terminal
 local neofetch = vim.fn.executable "neofetch" == 1 and "neofetch"
 if neofetch then
