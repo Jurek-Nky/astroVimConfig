@@ -26,9 +26,9 @@ options = {
       mapping = { "jk" }
     }
   },
-  {
-    "mg979/vim-visual-multi",
-    lazy = false
-  }
+  -- {
+  --   "mg979/vim-visual-multi",
+  --   lazy = false
+  -- }
 }
 return options

@@ -1,5 +1,4 @@
--- terminal opts can be used in user mapping file
-opts_list = {
+local opts_list = {
   float_exit_term = function(cmd)
     return {
       cmd = cmd,            -- command to execute when creating the terminal e.g. 'top'

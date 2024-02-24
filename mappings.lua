@@ -3,11 +3,18 @@ local maps = { n = {}, v = {}, i = {}, t = {} }
 -- ############################
 -- general
 -- ############################
+-- extend the find word in all files command, to also follow symlinks
+maps.n["<leader>fW"] = {
+  function()
+    require("telescope.builtin").live_grep {
+      additional_args = function(args) return vim.list_extend(args, { "--hidden", "--no-ignore", "-L" }) end,
+    }
+  end,
+  desc = "Find words in all files",
+}
 -- rebinding quit key to force quit
 maps.n["qf"] = { "<cmd>q!<cr>", desc = "force quit" }
 maps.n["qq"] = { "<cmd>q<cr>", desc = "quit" }
--- unmap escape to get used to using jk for escaping insert mode
-maps.i["<Esc>"] = {"<Nop>", desc = "remove escape to get used to using jk"}
 -- ############################
 -- buffers
 -- ############################
@@ -24,15 +31,18 @@ maps.n["<leader>bD"] = {
 -- ToggleTerm
 -- ############################
 local term_opts = require("user.plugins.options.toggleterm")
+-- keybind to open bash terminal
+maps.n["<leader>tb"] = {
+  function() utils.toggle_term_cmd(term_opts.float_pause_term("bash")) end,
+  desc = "Floating Bash shell"
+}
 -- keybind to generate PDF using typst
-local neofetch = vim.fn.executable "neofetch" == 1 and "neofetch"
-if neofetch then
+local typst = vim.fn.executable "typst" == 1 and "typst"
+if typst then
   maps.n["<leader>tt"] = {
     function() utils.toggle_term_cmd(term_opts.float_exit_term("typst compile main.typ")) end,
     desc = "Typst compile main.typ"
   }
-else
-  maps.n["<leader>tn"] = false -- unbinding astros default mapping for node
 end
 -- keybind for neofetch terminal
 local neofetch = vim.fn.executable "neofetch" == 1 and "neofetch"
@@ -41,8 +51,6 @@ if neofetch then
     function() utils.toggle_term_cmd(term_opts.float_pause_term("neofetch")) end,
     desc = "ToggleTerm neofetch"
   }
-else
-  maps.n["<leader>tn"] = false -- unbinding astros default mapping for node
 end
 -- rebind python terminal to always open floating window
 local python = vim.fn.executable "python" == 1 and "python" or vim.fn.executable "python3" == 1 and "python3"
