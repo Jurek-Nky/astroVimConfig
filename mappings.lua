@@ -79,5 +79,14 @@ end
 -- unmapping double lazygit key. main lazygit key is <leader>gg
 maps.n["<leader>tl"] = false
 
+local ranger = vim.fn.executable "ranger" == 1 and "ranger"
+if ranger then
+  maps.n["<leader>r"] = {
+    function()
+      require("ranger-nvim").open(true)
+    end,
+    desc = "open Ranger file manager"
+  }
+end
 
 return maps

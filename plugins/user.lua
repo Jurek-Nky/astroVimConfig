@@ -4,9 +4,14 @@ options = {
     opts = require("user.plugins.options.neo-tree")
   },
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    opts = require("user.plugins.options.tokyonight")
+    "tokyonight.nvim",
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    }
   },
   {
     "catppuccin/nvim",
@@ -26,9 +31,28 @@ options = {
       mapping = { "jk" }
     }
   },
+  {
+    "kelly-lin/ranger.nvim",
+    lazy = false,
+    opts = require("user.plugins.options.ranger")
+  },
+
+
   -- {
   --   "mg979/vim-visual-multi",
   --   lazy = false
+  -- }
+  --   {
+  --   "kelly-lin/ranger.nvim",
+  --   config = function()
+  --     require("ranger-nvim").setup({ replace_netrw = true })
+  --     vim.api.nvim_set_keymap("n", "<leader>ef", "", {
+  --       noremap = true,
+  --       callback = function()
+  --         require("ranger-nvim").open(true)
+  --       end,
+  --     })
+  --   end,
   -- }
 }
 return options
