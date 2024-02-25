@@ -6,10 +6,11 @@ return {
     popup = {
       -- settings that apply to float position only
       size = {
-        height = "80%",
-        width = "70%",
+        height = "90%",
+        width = "90%",
       },
       position = "50%",     -- 50% means center it
+      border = "rounded"
       -- you can also specify border here, if you want a different setting from
     },
     mappings = {

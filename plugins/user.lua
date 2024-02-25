@@ -14,16 +14,6 @@ options = {
     }
   },
   {
-    "catppuccin/nvim",
-    lazy = false,
-    name = "catppuccin",
-    -- opts = require("user.plugins.options.catppuccin")
-  },
-  {
-    "sainnhe/everforest",
-    lazy = false,
-  },
-  {
     "max397574/better-escape.nvim",
     event = "InsertCharPre",
     opts = {
